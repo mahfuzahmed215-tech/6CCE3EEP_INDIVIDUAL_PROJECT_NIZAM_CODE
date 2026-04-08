@@ -1,6 +1,3 @@
-# 6CCE3EEP_INDIVIDUAL_PROJECT_NIZAM_CODE
-By Nizam A K22016355
-
 # Tribological & Thermal Evaluation of Surface-Textured Automotive Brake Pads
 
 **Author:** Nizam Ahmed (K22016355)  
@@ -41,8 +38,19 @@ EEP_Submission_Code/
 ├── TEST3-TWO-HOLE-TEXTURE-WET-REPETITION-25N-1000to800RPM.csv
 ├── wear_log_template.csv
 │
-├── analysis_out/                    ← Generated output (figures + CSV tables)
-├── Initial tests/                   ← Preliminary/exploratory test data
+├── analysis_out/                    ← Generated output
+│   ├── figures/                     ← PNG + PDF exports of all plots
+│   ├── results_perSegment.csv       ← One row per braking repetition (18 rows)
+│   ├── results_perCondition.csv     ← Condition-level means ± SD (6 rows)
+│   ├── success_criteria.csv         ← Pass/fail evaluation
+│   ├── analysis_workspace_core.mat  ← Core variables for quick reload
+│   └── analysis_workspace_full.mat  ← Full workspace snapshot
+│
+├── Initial tests/                   ← Preliminary single-run data (not used in analysis)
+│   ├── TEST1-NOTEXTURE-DRY.csv
+│   ├── TEST1-NOTEXTURE-DRY-REPETITION.csv
+│   └── TEST1-NOTEXTURE-WET-REPETITION.csv
+│
 └── Misc/                            ← Supporting files
 ```
 
@@ -65,7 +73,7 @@ EEP_Submission_Code/
    Complete_One_Click_Runner
    ```
    This verifies all required files are present, then executes the full pipeline.
-4. All outputs are written to `analysis_out/`.
+4. All outputs are written to `analysis_out/`. Pre-computed results from the dissertation are already included in that folder.
 
 ---
 
@@ -80,20 +88,6 @@ The pipeline processes six Bruker CSV files (3 texture configurations × 2 envir
 5. **Evaluates** against dissertation success criteria (|Δμ| ≤ 5 % vs flat baseline; wear reduction ≥ 15 %).
 6. **Performs** two-way ANOVA (texture × environment) with partial η² and Cohen's f effect sizes.
 7. **Exports** all figures (PNG at 300 DPI + vector PDF) and result tables (CSV).
-
----
-
-## Key Outputs
-
-| File | Description |
-|------|-------------|
-| `results_perSegment.csv` | One row per braking repetition (18 rows) with μ, ΔT, load, distance |
-| `results_perCondition.csv` | Condition-level means and standard deviations (6 rows) |
-| `success_criteria.csv` | Pass/fail evaluation against dissertation criteria |
-| `anova_mu_mean.csv` | Two-way ANOVA table for mean friction coefficient |
-| `effects_mu_mean.csv` | Partial η² and Cohen's f effect sizes |
-| `fig_summary.*` | Bar charts of μ and ΔT by condition |
-| `ts_*.*` | Time-series diagnostic plots per segment |
 
 ---
 
